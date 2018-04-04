@@ -56,7 +56,7 @@ A partir de ahora ya no nos pide la clave de acceso.
 
 ![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Imagenes/conexsincon.PNG)
 
-##Establecer tareas con cron ##
+## Establecer tareas con cron ##
 
 Modificando correctamente el archivo /etc/crontab podemos decirle al servidor que realice copias del fichero /var/www/ de la maquina principal en la maquina remota cada hora. 
 
