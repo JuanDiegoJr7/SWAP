@@ -1,8 +1,8 @@
-#PRÁCTICA 2
+# PRÁCTICA 2 #
     
 ***
 
-##**CLONAR LA INFORMACIÓN DE UN SITIO WEB**
+## **CLONAR LA INFORMACIÓN DE UN SITIO WEB** #
 
 
 ***
