@@ -1,7 +1,10 @@
 #PRÁCTICA 2
-***    
+    
 ***
+
 ##**CLONAR LA INFORMACIÓN DE UN SITIO WEB**
+
+
 ***
 
 En esta segunda práctica se han alcanzado los siguientes objetivos:
@@ -59,9 +62,8 @@ Modificando correctamente el archivo /etc/crontab podemos decirle al servidor qu
 
 La sintaxis correcta quedaría así:
 
-![img]_(https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Imagenes/cron.PNG)
+![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Imagenes/cron.PNG)
 
-***
 ***
 
 
