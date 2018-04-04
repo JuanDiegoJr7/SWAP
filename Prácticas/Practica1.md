@@ -19,6 +19,6 @@ Como podemos ver, desde ubuntuServer02, hemos accedido a remotamente a ubuntuSer
 
 - Uso de la herramienta **curl**:
 
-![img](https://github.com/JuanDiegoJr7/SWAP/tree/master/Prácticas/Imagenes/curl.PNG)
+![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Imagenes/curl.PNG)
 
 En la imagen se puede observar como se realiza curl en cada máquina accediendo a la otra.
