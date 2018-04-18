@@ -110,7 +110,7 @@ Una vez modificada esta configuración, lanzamos el servicio haproxy mediante la
 
 Una vez iniciado, comprobamos que funciona igual que con haproxy:
 
-![img]()
+![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Imagenes/haproxybasico.PNG)
 
 
 
