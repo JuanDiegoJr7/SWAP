@@ -122,13 +122,10 @@ Para este apartado utilizamos una máquina externa a nuestra granja web, a la qu
 
 Usando **nginx** como balanceador obtenemos los siguientes resultados:
 
-![img]()
+![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Imagenes/sobrecarganginx.PNG)
 
 Usando **haproxy** como balanceador obtenemos los siguientes resultados:
 
-![img]()
-
-
-
+![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Imagenes/sobrecargahaproxy.PNG)
 
 ***
