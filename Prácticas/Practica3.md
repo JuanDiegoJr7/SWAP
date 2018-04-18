@@ -23,11 +23,11 @@ Para todo ello, se ha creado una tercera máquina que hará de balanceador media
 
 En primer lugar, comenzaremos por instalar el software, mediate el comando:
 
---> *sudo apt-get install nginx* 
+    sudo apt-get install nginx 
 
 A continuación iniciamos el software:
 
---> *sudo systemctl start nginx*
+    sudo systemctl start nginx
 
 La configuración básica de nginx no nos vale tal cual, así que realizamos los siguientes cambios en el archivo "*/etc/nginx/conf.d/default.conf*" de manera que quede así:
 
@@ -82,7 +82,7 @@ haproxy es un balanceador de carga y también proxy, de forma que puede balancea
 
 Para instalarlo, basta con utilizar el apt-get install:
 
- --> *sudo apt-get install haproxy*
+     sudo apt-get install haproxy
 
 Como la configuración que trae por defecto no nos vale, usaremos la siguiente (modificación del archivo /etc/haproxy/haproxy.cfg):
 
@@ -106,7 +106,7 @@ Como la configuración que trae por defecto no nos vale, usaremos la siguiente (
 
 Una vez modificada esta configuración, lanzamos el servicio haproxy mediante la orden:
 
---> *sudo /usr/sbin/haproxy -f /etc/haproxy/haproxy.cfg*
+    sudo /usr/sbin/haproxy -f /etc/haproxy/haproxy.cfg
 
 Una vez iniciado, comprobamos que funciona igual que con haproxy:
 
@@ -115,6 +115,18 @@ Una vez iniciado, comprobamos que funciona igual que con haproxy:
 
 
 ## Someter a una **alta carga** el servidor balanceado:
+
+Para este apartado utilizamos una máquina externa a nuestra granja web, a la que hemos llamado "clientes". En ella ejecutamos la herramienta *Apache Benchmark* como sigue:
+
+    ab -n 1000 -c 10 http://192.168.1.15/index.html
+
+Usando **nginx** como balanceador obtenemos los siguientes resultados:
+
+![img]()
+
+Usando **haproxy** como balanceador obtenemos los siguientes resultados:
+
+![img]()
 
 
 
