@@ -128,4 +128,7 @@ Usando **haproxy** como balanceador obtenemos los siguientes resultados:
 
 ![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Imagenes/sobrecargahaproxy.PNG)
 
+En la siguiente imagen vemos con la ayuda de la herramienta ** *htop* ** el balanceo de carga:
+
+![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Practices/Images/htop.PNG)
 ***
