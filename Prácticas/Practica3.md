@@ -78,6 +78,45 @@ Otras opciones que podemos usar son las siguientes:
 
 ## Balanceador con **haproxy**:
 
+haproxy es un balanceador de carga y también proxy, de forma que puede balancear cualquier tipo de tráfico. 
+
+Para instalarlo, basta con utilizar el apt-get install:
+
+ --> *sudo apt-get install haproxy*
+
+Como la configuración que trae por defecto no nos vale, usaremos la siguiente (modificación del archivo /etc/haproxy/haproxy.cfg):
+
+    global
+        daemon
+        maxconn 256
+
+    defaults
+        mode http
+        contimeout 4000
+        clitimeout 42000
+        srvtimeout 43000
+
+    frontend http-in
+        bind *:80
+        default_backend servers
+
+    backend servers
+        server m1 172.16.168.130:80 maxconn 32
+        server m2 172.16.168.131:80 maxconn 32    
+
+Una vez modificada esta configuración, lanzamos el servicio haproxy mediante la orden:
+
+--> *sudo /usr/sbin/haproxy -f /etc/haproxy/haproxy.cfg*
+
+Una vez iniciado, comprobamos que funciona igual que con haproxy:
+
+![img]()
+
+
+
+## Someter a una **alta carga** el servidor balanceado:
+
+
 
 
 ***
