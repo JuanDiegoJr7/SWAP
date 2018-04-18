@@ -13,12 +13,12 @@ A continuación se muestra el uso de estas dos últimas herramientas mencionadas
 
 -  Uso de la herramienta **ssh**:
 
-![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Imagenes/ssh.PNG)
+![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Im%C3%A1genes/ssh.PNG)
 
 Como podemos ver, desde ubuntuServer02, hemos accedido a remotamente a ubuntuServer02.
 
 - Uso de la herramienta **curl**:
 
-![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Imagenes/curl.PNG)
+![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Im%C3%A1genes/curl.PNG)
 
 En la imagen se puede observar como se realiza curl en cada máquina accediendo a la otra.

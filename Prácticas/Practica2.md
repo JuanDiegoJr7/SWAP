@@ -23,7 +23,7 @@ Mediante el comando:
 --> "*tar czf - directorio | ssh equipodestino 'cat > ~/tar.tgz'*"
  
  
-![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Imagenes/copiassh.PNG)
+![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Im%C3%A1genes/copiassh.PNG)
 
 ## Clonación contenido entre máqiuinas
 
@@ -32,7 +32,7 @@ En nuestro caso, hemos clonado la carpeta */var/www/* mediante el comando:
 
 --> "*rsync -avz -e ssh 192.168.1.10:/var/www/ /var/www/*"
 
-![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Imagenes/clonrsync.PNG)
+![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Im%C3%A1genes/clonrsync.PNG)
 
 ## Configuración de **ssh** para acceder sin contraseña 
 
@@ -42,7 +42,7 @@ Mediante ssh-keygen generamos la clave pública-privada:
 
 --> *ssh-keygen -b 4096 -t rsa*
 
-![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Imagenes/key.PNG)
+![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Im%C3%A1genes/key.PNG)
 
 Luego, copiamos la clave pública al equipo remoto, añadiéndola al fichero *~/.ssh/know_hosts*:
 
@@ -54,7 +54,7 @@ Por último copiamos la clave mediante el comando:
 
 A partir de ahora ya no nos pide la clave de acceso.
 
-![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Imagenes/conexsincon.PNG)
+![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Im%C3%A1genes/conexsincon.PNG)
 
 ## Establecer tareas con cron ##
 
@@ -62,7 +62,7 @@ Modificando correctamente el archivo /etc/crontab podemos decirle al servidor qu
 
 La sintaxis correcta quedaría así:
 
-![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Imagenes/cron.PNG)
+![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Im%C3%A1genes/cron.PNG)
 
 ***
 
