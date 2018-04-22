@@ -48,14 +48,39 @@ Y agregamos estas líneas debajo de donde pone SSLEngine on:
         SSLCertificateFile /etc/apache2/ssl/apache.crt
         SSLCertificateKeyFile /etc/apache2/ssl/apache.key
 
+![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Im%C3%A1genes/4-defaultssl.PNG)
+
 Activamos el sistio default-ssl y reiniciamos apache:
 
         a2ensite default-ssl
         service apache2 reload
 
+Ahora traspasamos lo realizado en el servidor 1 al resto de servidores y al balanceador mediante la herramienta ** *rsync* **:
+
+        rsync -avz -e ssh ubuntus@192.168.1.10:/etc/apache2/ssl /etc/apache2/ssl
+
+![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Im%C3%A1genes/4-traspaso.PNG)
+
+
+Una vez traspasado todo, tenemos que **configurar nginx adeacuadamente para aceptar y balancear correctamente tanto el tráfico HTTP como el HTTPS**:
+
+Para ello añadimos al archivo /etc/nginx/conf.d/default.conf:
+
+        listen 443 ssl;
+        ssl_certificate /etc/apache2/ssl/apache.crt;
+        ssl_certificate_key /etc/apache2/ssl/apache.key;
+
+![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Im%C3%A1genes/4-sslpermision.PNG)
+
+
 Para hacer las peticiones por HTTPS, ejecutaremos:
 
         curl –k https://ipmaquina1/index.html
+
+En la imagen observamos como funciona tanto con *http* como *https*:
+
+![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Im%C3%A1genes/4-finalssl.PNG)
+
 
 ## Configuración del cortafuegos
 
