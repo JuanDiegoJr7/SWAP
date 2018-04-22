@@ -94,9 +94,10 @@ Todos los paquetes **TCP/IP** que entran o salen de nuestra granja web tienen qu
 - Tráfico TCP o UDP
 - Etc
 
-###Configuración del cortafuegos **iptables** en Linux:
+A continuación, realizamos la configuración.
 
-####¿Qué es *iptables*?
+**Configuración del cortafuegos **iptables** en Linux:**
+
 
 iptables es una herramienta de cortafuegos, de espacio de usuario, con la que el superusuario define reglas de filtrado de paquetes, de traducción de direcciones de red y mantiene registros de log. Esta herramienta está construida sobre *Netfilter*, una parte del núcleo de Linux que permite interceptar y manipular paquetes.
 
@@ -104,7 +105,7 @@ Vamos a establecer una lista de reglas con las que definir qué acciones hacer c
 
 Para la configuración adecuada de iptables, hemos establecido en primer lugar y como reglas por defecto la denegación de todo el tráfico, salvo el que permitamos después explícitamente. 
 
-###Uso de la aplicación **iptables**:
+** Uso de la aplicación iptables: **
 
 Para facilitar el uso de esta herramienta, creamos un script que almacene las ordenes que queremos que se ejecuten siempre y solo nos quedaría decirle al servidor que lo ejecute al iniciarse:
 
