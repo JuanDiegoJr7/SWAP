@@ -141,21 +141,11 @@ A continuación nos queda decirle al sistema que lo ejecute cada vez que se inic
         $ sudo update-rc.d scriptiptables.sh defaults
 
 Y vemos como al reiniciar, el cortafuegos se ejecuta automáticamente:
+        
+        sudo iptables -L -n -v
 
-![img]()
+![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Im%C3%A1genes/4-finscript.PNG)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+---
 
 
