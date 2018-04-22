@@ -82,20 +82,67 @@ En la imagen observamos como funciona tanto con *http* como *https*:
 ![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Im%C3%A1genes/4-finalssl.PNG)
 
 
-## Configuración del cortafuegos
+## Configuración del cortafuegos:
+
+Un cortafuegos es un componente esencial que protege la granja web de accesos indebidos. Son dispositivos colocados entre subredes para realizar diferentes tareas de manejo de paquetes. Actúa como el guardián de la puerta al sistema web, permitiendo el tráfico autorizado y denegando el resto.
+
+Todos los paquetes **TCP/IP** que entran o salen de nuestra granja web tienen que pasar por el cortafuegos, que los examina y bloquea aquellos que no cumplen los criterios de seguridad que establecemos. Estos criterios se configuran mediante un conjunto de reglas:
+
+- Rango de puertos
+- Direcciones IP
+- Rangos de IP
+- Tráfico TCP o UDP
+- Etc
+
+###Configuración del cortafuegos **iptables** en Linux:
+
+####¿Qué es *iptables*?
+
+iptables es una herramienta de cortafuegos, de espacio de usuario, con la que el superusuario define reglas de filtrado de paquetes, de traducción de direcciones de red y mantiene registros de log. Esta herramienta está construida sobre *Netfilter*, una parte del núcleo de Linux que permite interceptar y manipular paquetes.
+
+Vamos a establecer una lista de reglas con las que definir qué acciones hacer con cada paquete en función de la información que incluye. 
+
+Para la configuración adecuada de iptables, hemos establecido en primer lugar y como reglas por defecto la denegación de todo el tráfico, salvo el que permitamos después explícitamente. 
+
+###Uso de la aplicación **iptables**:
+
+Para facilitar el uso de esta herramienta, creamos un script que almacene las ordenes que queremos que se ejecuten siempre y solo nos quedaría decirle al servidor que lo ejecute al iniciarse:
+
+        #Eliminar cualquier orden anterior
+        iptables -F
+        iptables -X
 
 
+        #Establecer política por defecto, denegar cualquier servicio
+        iptables -P INPUT DROP
+        iptables -P OUTPUT DROP
+        iptables -P FORWARD DRÒP
 
+        #Permitir cualquier acceso desde localhost (interface lo):
+        iptables -A INPUT -i lo -j ACCEPT
+        iptables -A OUTPUT -o lo -j ACCEPT
+        # Abrir el puerto 22 para permitir el acceso por SSH
+        iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+        iptables -A OUTPUT -p tcp --sport 22 -j ACCEPT
+        # Abrir los puertos HTTP (80) de servidor web
+        iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+        iptables -A OUTPUT -p tcp --sport 80 -j ACCEPT
+        # Abrir los puertos HTTPS (443) de servidor web
+        iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+        iptables -A OUTPUT -p tcp --sport 443 -j ACCEPT
 
+Una vez realizado, lo comprobamos y debería darnos acceso a la maquina servidora:
 
+![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Im%C3%A1genes/4-scriptprueba.PNG)
 
+A continuación nos queda decirle al sistema que lo ejecute cada vez que se inicie. Lo haremos mediante el comando:
 
+        $ sudo mv /home/ubuntus/scriptiptables.sh /etc/init.d/
+        $ sudo update-rc.d scriptiptables.sh defaults
 
+Y vemos como al reiniciar, el cortafuegos se ejecuta automáticamente:
 
-
-
-
-
+![img]()
 
 
 
