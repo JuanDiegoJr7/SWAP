@@ -64,7 +64,7 @@ Crearemos una base de datos MySQL mediante las siguientes órdenes:
                 +---------+-----------+
                     3 rows in set (0,00 sec)
 
-![img]()
+![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Im%C3%A1genes/5-CreateBD.PNG)
 
 ## Replicar una BD MySQL con ** *mysqldump* **
 
@@ -91,7 +91,7 @@ Tras realizarlo es importante recordar que tenemos bloqueadas las tabalas, proce
         mysql> UNLOCK TABLES;
         mysql> quit
 
-![img]()
+![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Im%C3%A1genes/5-sqldump1.PNG)
 
 Una vez creado el archivo "contactos.sql", desde nuestro otro servido lo rescatamos:
 
@@ -111,7 +111,7 @@ Por último solo queda restaurar la copia de la otra máquina:
 
         mysql -u root -p contactos < /tmp/contactos.sql
 
-![img]()
+![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Im%C3%A1genes/5-copiacorrecta1.PNG)
 Podemos ver en la imagen como aparece la tabla tal y como se creó en la Máquina 1.
 
 
