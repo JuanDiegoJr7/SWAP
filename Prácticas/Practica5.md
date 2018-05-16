@@ -114,16 +114,69 @@ Por último solo queda restaurar la copia de la otra máquina:
 ![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Im%C3%A1genes/5-copiacorrecta1.PNG)
 Podemos ver en la imagen como aparece la tabla tal y como se creó en la Máquina 1.
 
+Como nota final del apartado, recordar que también podríamos haber realizado la copia directamente usando un "pipe" a un ssh para exportar los datos al mismo tiempo:
 
-## Replicación de BD mediante una configuración maestro-exclavo
+        mysqldump contactos -u root -p | ssh 192.168.1.11 mysql
 
+## Replicación de BD mediante una configuración maestro-esclavo.
 
+Vamos a configurar el demonio para hacer la replicación de BD sobre un esclavo. Así, no tiene que haber una persona realizando la replicación a mano.
 
+Primero editamos la configuración de mysql que se encuentra en /etc/mysql/mysql.conf.d/mysql.cnf:
 
+        sudo nano /etc/mysql/mysql.conf.d/mysql.cnf
 
+Comentamos el parámetro "bind-address" que sirve para que escuche a un servidor:
 
+Y descomentamos las líneas:
 
+        log_errror = /var/log/mysql/error.log
+        server-id = 1
+        log_bin = /var/log/mysql/bin.log
+        
+Una vez realizados los cambios anteriores, reseteamos el servicio:
 
+        /etc/init.d/mysql restart
+
+![img]()
+
+A continuación pasamos a configurar la máquina 2 que actúa como esclavo:
+
+La configuración es similar a la del maestro, con la diferencia de que el server-id en esta ocasión será 2.
+
+Una vez más, si no da ningún error, habremos tenido éxito. Podemos volver al maestro para crear un usuario y darle permisos de acceso para la replicación. Entramos en mysql y ejecutamos las siguientes sentencias:
+
+        mysql> CREATE USER esclavo IDENTIFIED BY 'esclavo';
+        mysql> GRANT REPLICATION SLAVE ON *.* TO 'esclavo'@'%' IDENTIFIED BY 'esclavo';
+        mysql> FLUSH PRIVILEGES;
+        mysql> FLUSH TABLES;
+        mysql> FLUSH TABLES WITH READ LOCK;
+
+Para finalizar con la configuración en el maestro, obtenemos los datos de la BD que vamos a replicar para posteriormente usarlos en la configuración del esclavo:
+
+        mysql> SHOW MASTER STATUS;
+
+![img] ()
+
+Ahora, en la maquina 2 (el esclavo), iniciamos mysql e introducimos las siguientes ordenes para configurar el esclavo:
+
+        mysql> CHANGE MASTER TO MASTER_HOST='192.168.31.200', MASTER_USER='esclavo', MASTER_PASSWORD='esclavo', MASTER_LOG_FILE='mysql-bin.000001', MASTER_LOG_POS=501, MASTER_PORT=3306;
+
+Y por último iniciamos el esclavo:
+
+        mysql> START SLAVE;
+
+![img]()
+
+Para comprobar que todo funciona correctamente, ejecutamos en el esclavo la orden:
+
+        mysql> SHOW SLAVE STATUS\G
+
+El valor de "Seconds_Behind_Master" debe ser distinto de "null". Si no es así, ahí mismo se verán los errores. 
+
+Ahora, cualquier cambio realizado en el maestro se verá reflejado también en el esclavo.
+
+---
 
 
 
