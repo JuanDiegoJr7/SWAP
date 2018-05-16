@@ -138,7 +138,7 @@ Una vez realizados los cambios anteriores, reseteamos el servicio:
 
         /etc/init.d/mysql restart
 
-![img]()
+![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Im%C3%A1genes/5-restartmysq.PNG)
 
 A continuación pasamos a configurar la máquina 2 que actúa como esclavo:
 
@@ -156,7 +156,7 @@ Para finalizar con la configuración en el maestro, obtenemos los datos de la BD
 
         mysql> SHOW MASTER STATUS;
 
-![img] ()
+![img] https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Im%C3%A1genes/5-configmaestro.PNG()
 
 Ahora, en la maquina 2 (el esclavo), iniciamos mysql e introducimos las siguientes ordenes para configurar el esclavo:
 
@@ -166,7 +166,7 @@ Y por último iniciamos el esclavo:
 
         mysql> START SLAVE;
 
-![img]()
+![img](https://github.com/JuanDiegoJr7/SWAP/blob/master/Pr%C3%A1cticas/Im%C3%A1genes/5-confesclavo.PNG)
 
 Para comprobar que todo funciona correctamente, ejecutamos en el esclavo la orden:
 
